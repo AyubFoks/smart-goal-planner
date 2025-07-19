@@ -1,19 +1,46 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  font-family: 'Outfit', sans-serif;
+  background: #9902f0;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 1024px;
   margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   padding: 20px;
-  background: #fff;
+  background: #e3afff;
+}
+
+.page {
+  max-width: 1024px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sidebar {
+  width: 20%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.main-content {
+    width: 80%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2, h3 {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 }
 
 .form input,
@@ -34,6 +61,70 @@ button {
   background: #fefefe;
 }
 
+.item-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.9em;
+  color: rgb(38, 38, 38);
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.deposit-form input {
+  width: 150px;
+  padding: 7px;
+  border: solid 2px #9902f0;
+  border-radius: 20px;
+}
+
+.deposit-form button {
+  background: #9902f0;
+  color: white;
+  font-weight: 600;
+  border: solid 1px #9902f0;
+  border-radius: 20px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.deposit-form button:hover {
+  background: white;
+  color: #9902f0;
+  border: solid 1px #9902f0;
+  transition: 0.5s;
+}
+
+.edit-btn,
+.delete-btn {
+  background: white;
+  color: rgb(38, 38, 38);
+  font-weight: 600;
+  border: solid 2px #9902f0;
+  border-radius: 20px;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: green;
+  color: white;
+  border: none;
+  transition: 0.5s;
+}
+
+.delete-btn:hover {
+  background: red;
+  color: white;
+  border: none;
+  transition: 0.5s;
+}
+
 .goal-item.overdue {
   border-color: red;
   background: #ffe5e5;
@@ -46,13 +137,13 @@ button {
 
 .progress-bar {
   background: #e0e0e0;
-  height: 10px;
+  height: 5px;
   border-radius: 5px;
   margin: 5px 0;
 }
 
 .progress-fill {
-  background: #4caf50;
+  background: #9902f0;
   height: 100%;
   border-radius: 5px;
 }
@@ -61,4 +152,14 @@ button {
   background: #f1f1f1;
   padding: 10px;
   margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.form {
+  display: flex;
+  background: #f1f1f1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
 }

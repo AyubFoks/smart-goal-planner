@@ -74,14 +74,21 @@ export default function App() {
   return (
     <div className="container">
       <h1>Smart Goal Planner</h1>
-      <Overview goals={goals} />
-      <AddGoalForm newGoal={newGoal} setNewGoal={setNewGoal} addGoal={addGoal} />
-      <GoalList
-        goals={goals}
-        deleteGoal={deleteGoal}
-        depositToGoal={depositToGoal}
-        updateGoal={updateGoal}
-      />
+      <p>Track your financial goals and stay motivated!</p>
+      <div className="page">
+        <div className="sidebar">
+          <Overview goals={goals} />
+          <AddGoalForm newGoal={newGoal} setNewGoal={setNewGoal} addGoal={addGoal} />
+        </div>
+        <div className="main-content">
+          <GoalList
+            goals={goals}
+            deleteGoal={deleteGoal}
+            depositToGoal={depositToGoal}
+            updateGoal={updateGoal}
+          />
+        </div>
+      </div>
     </div>
   );
 }
