@@ -78,3 +78,8 @@ npm start
 ```
 
 ---
+
+## Author
+
+[Ayub Karanja](https://github.com/AyubFoks)
+© 2025
