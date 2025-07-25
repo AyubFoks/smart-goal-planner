@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import AddGoalForm from "./components/AddGoalForm";
 import GoalList from "./components/GoalList";
 import Overview from "./components/Overview";
+import { db } from './firebaseConfig';
+import { ref, onValue, push, set, remove, update } from "firebase/database";
 import "./index.css";
-
-const API_URL = "http://localhost:3000/goals";
 
 export default function App() {
   const [goals, setGoals] = useState([]);
@@ -15,11 +15,19 @@ export default function App() {
     deadline: ""
   });
 
-  // Fetch all goals
+  // Fetch all goals from Firebase
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => setGoals(data));
+    const goalsRef = ref(db, "goals");
+    const unsubscribe = onValue(goalsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Convert object to array with id
+        setGoals(Object.entries(data).map(([id, goal]) => ({ id, ...goal })));
+      } else {
+        setGoals([]);
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
   // Add goal
@@ -30,37 +38,22 @@ export default function App() {
       savedAmount: 0,
       createdAt: new Date().toISOString()
     };
-
-    fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(goalToAdd)
-    })
-      .then((res) => res.json())
-      .then((goal) => {
-        setGoals([...goals, goal]);
-        setNewGoal({ name: "", targetAmount: 0, category: "", deadline: "" });
-      });
+    const goalsRef = ref(db, "goals");
+    const newGoalRef = push(goalsRef);
+    set(newGoalRef, goalToAdd);
+    setNewGoal({ name: "", targetAmount: 0, category: "", deadline: "" });
   };
 
   // Delete goal
   const deleteGoal = (id) => {
-    fetch(`${API_URL}/${id}`, { method: "DELETE" }).then(() =>
-      setGoals(goals.filter((g) => g.id !== id))
-    );
+    const goalRef = ref(db, `goals/${id}`);
+    remove(goalRef);
   };
 
   // Update goal (name, targetAmount, category, deadline)
   const updateGoal = (id, updatedFields) => {
-    fetch(`${API_URL}/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updatedFields)
-    })
-      .then((res) => res.json())
-      .then((updatedGoal) =>
-        setGoals(goals.map((g) => (g.id === id ? updatedGoal : g)))
-      );
+    const goalRef = ref(db, `goals/${id}`);
+    update(goalRef, updatedFields);
   };
 
   // Deposit

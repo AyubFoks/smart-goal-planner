@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
 
 export default function GoalItem({ goal, deleteGoal, depositToGoal, updateGoal }) {
     const [depositAmount, setDepositAmount] = useState("");
     const [isEditing, setIsEditing] = useState(false);
     const [editedGoal, setEditedGoal] = useState(goal);
+
+    // Sync editedGoal with goal prop when goal changes
+    useEffect(() => {
+        setEditedGoal(goal);
+    }, [goal]);
 
     const handleSave = () => {
         updateGoal(goal.id, editedGoal);
