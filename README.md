@@ -7,7 +7,7 @@ https://smart-goal-planner-five-zeta.vercel.app/
 
 ## Details
 
-A simple React-based fintech application that helps users manage multiple savings goals. Users can create, update, delete, and deposit into goals while tracking progress with a visual progress bar. Data persistence is handled by `json-server` using a local `db.json` file.
+A simple React-based fintech application that helps users manage multiple savings goals. Users can create, update, delete, and deposit into goals while tracking progress with a visual progress bar. Data persistence is handled by Google Firebase API.
 
 ---
 
@@ -21,14 +21,15 @@ A simple React-based fintech application that helps users manage multiple saving
   - Total money saved
   - Goals completed
   - Deadline warnings and overdue notifications
-- **Data Persistence**: All data is stored in `db.json` and served by `json-server`.
+- **Data Persistence**: All data is stored in a Google Firebase database.
 
 ---
 
 ## Tech Stack
 
-- **Frontend**: React (with Fetch API for HTTP requests)
-- **Backend Simulation**: `json-server`
+- **Frontend**: React
+- **Backend/Data Persistence**: Google Firebase Realtime Database
+- **Hosting**: Vercel
 
 ---
 
@@ -36,20 +37,19 @@ A simple React-based fintech application that helps users manage multiple saving
 
 ```
 smart-goal-planner/
- ├── db.json
  ├── public/
  │    └── index.html
  ├── src/
- │    ├── App.jsx
+ │    ├── App.js
  │    ├── index.js
  │    ├── index.css
+ │    ├── firebaseConfig.js
  │    └── components/
- │         ├── AddGoalForm.jsx
- │         ├── DepositForm.jsx
- │         ├── GoalItem.jsx
- │         ├── GoalList.jsx
- │         ├── Overview.jsx
- │         └── ProgressBar.jsx
+ │         ├── AddGoalForm.js
+ │         ├── GoalItem.js
+ │         ├── GoalList.js
+ │         ├── Overview.js
+ │         └── ProgressBar.js
  ├── package.json
  └── README.md
 ```
@@ -69,16 +69,7 @@ cd smart-goal-planner
 npm install
 ```
 
-### 3. Add db.json
-Ensure `db.json` exists in the root folder with sample data
-
-### 4. Run json-server
-In one terminal:
-```bash
-npx json-server --watch db.json --port 3000
-```
-
-### 5. Run the React App
+### 3. Run the React App
 In another terminal:
 ```bash
 npm start
