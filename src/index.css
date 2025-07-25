@@ -65,6 +65,10 @@ body {
   border: solid 1.5px #9902f0;
 }
 
+.sidebbar hr {
+  margin-bottom: 50px;
+}
+
 .main-content {
   flex: 1 1 80%;
   max-width: 80%;
@@ -187,7 +191,80 @@ button {
   background: #f1f1f1;
   padding: 10px;
   margin-bottom: 20px;
+  margin-top: 30px;
   border-radius: 5px;
+}
+
+.overview-goal-list {
+  list-style: none;
+  padding: 0;
+}
+
+.overview-goal-item {
+  margin-bottom: 12px;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  color: inherit;
+}
+
+.overview-goal-name {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.overview-goal-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.overview-goal-item.status-complete {
+  color: green;
+  font-weight: bold;
+}
+
+.overview-goal-item.status-overdue {
+  color: red;
+  font-weight: bold;
+}
+
+.overview-goal-item.status-due-soon {
+  color: orange;
+  font-weight: bold;
+}
+
+.overview-goal-time {
+  font-size: 0.9em;
+  font-weight: normal;
+  color: #444;
+}
+
+.overview-goal-status {
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  margin-left: 8px;
+  color: white;
+  background: #888;
+  font-weight: bold;
+  translate: -10px;
+}
+
+.overview-goal-status.status-complete {
+  background: green;
+}
+
+.overview-goal-status.status-overdue {
+  background: red;
+}
+
+.overview-goal-status.status-due-soon {
+  background: orange;
 }
 
 .form {

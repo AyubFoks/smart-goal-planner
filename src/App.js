@@ -70,8 +70,9 @@ export default function App() {
       <p>Track your financial goals and stay motivated!</p>
       <div className="page">
         <div className="sidebar">
-          <Overview goals={goals} />
           <AddGoalForm newGoal={newGoal} setNewGoal={setNewGoal} addGoal={addGoal} />
+          <hr />
+          <Overview goals={goals} />
         </div>
         <div className="main-content">
           <GoalList
