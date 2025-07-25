@@ -1,5 +1,12 @@
 # Smart Goal Planner
 
+## Deployment Link
+
+https://smart-goal-planner-five-zeta.vercel.app/
+
+
+## Details
+
 A simple React-based fintech application that helps users manage multiple savings goals. Users can create, update, delete, and deposit into goals while tracking progress with a visual progress bar. Data persistence is handled by `json-server` using a local `db.json` file.
 
 ---
